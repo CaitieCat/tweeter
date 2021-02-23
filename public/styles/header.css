@@ -1,0 +1,11 @@
+header {
+  display: flex;
+  height: 400px;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  background-color: #004f8c;
+  background-image: url(http://www.transparenttextures.com/patterns/black-scales.png);
+  color:#ffffff
+}
+
