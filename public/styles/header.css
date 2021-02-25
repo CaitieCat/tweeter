@@ -1,7 +1,8 @@
 .page-header {
   display: flex;
   height: 400px;
-  width: 100%;
+  width: 30%;
+  margin: 50px;
   flex-direction: column;
   align-items: center;
   background-color: #004f8c;
@@ -10,3 +11,9 @@
   font-family: "Source Sans Pro", sans-serif;
 }
 
+@media (max-width: 768px){
+  .page-header{
+    margin: auto;
+    width: 100%;
+  }
+}
