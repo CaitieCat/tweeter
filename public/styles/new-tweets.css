@@ -1,7 +1,12 @@
 .counter {
-    display: flex;
-    justify-content: flex-end;
     margin : 1.5em;
+    font-family: 'Bungee', cursive;
+}
+
+.submitTweet {
+    display: flex;
+    justify-content: space-between;
+   
 }
 
 #tweet-text {
@@ -13,14 +18,19 @@
     border-left: none;
     border-width: 5px;
     background-color: #f4f1ec;
+    
 }
 .tweet-box{
     margin: 1.5em;
     margin-bottom: auto;
+    font-family: 'Open Sans', sans-serif;
 }
 
 button {
     margin: 1.5em;
     color: #FFFFFF;
-    background-color: #004f8c;
+    background-color: #4056AC;
+    font-family: 'Bungee', sans-serif;
+    padding: 12px 8px;
+    border: none;
 }
