@@ -18,8 +18,9 @@
     border-left: none;
     border-width: 5px;
     background-color: #f4f1ec;
-    
+    outline: none;
 }
+
 .tweet-box{
     margin: 1.5em;
     margin-bottom: auto;
