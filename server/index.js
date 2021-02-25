@@ -29,10 +29,10 @@ require("./lib/date-adjust")();
 // so it can define routes that use it to interact with the data layer.
 const tweetsRoutes = require("./routes/tweets")(DataHelpers);
 
-app.post("/tweets", (req, res) => {
+/*app.post("/tweets", (req, res) => {
   console.log("New tweet incoming!");
   res.redirect("/");
-});
+});*/
 
 
 
