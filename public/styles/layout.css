@@ -50,10 +50,25 @@ body {
  }
 
  .postedTweet {
+   display: flex;
+   flex-direction: column;
    border: solid;
    border-width: 5px;
    margin: 1.5em;
    padding: 15px;
+ }
+
+ .postedTweet header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+ }
+
+ .handle{
+   display: flex;
+   flex-basis: 66.7%;
+   justify-content: flex-end;
  }
 
  .postedTweet:hover {

@@ -47,8 +47,8 @@ const createTweetElement = function(tweetObj) {
       <article class="postedTweet">
       <header>
       <img src="${tweetObj.user.avatars}">
-      ${tweetObj.user.name}
-      ${tweetObj.user.handle}
+      <div class="name">${tweetObj.user.name}</div>
+      <div class="handle">${tweetObj.user.handle}</div>
       </header>
       ${tweetObj.content.text} <hr/>
       <footer> ${timeStamp}h ago </footer>
@@ -84,19 +84,25 @@ $(document).ready(function() {
     event.preventDefault();
     console.log('Submit form');
     const tweetContent = $(this).serialize();
-  
-  $.ajax({
+    if (tweetContent.length > 145){
+      alert("Tweet is too long!");
+      event.stopPropagation();
+    } else if (tweetContent === 'text=' || tweetContent === null ){
+      alert("Please enter a tweet before submitting");
+      event.stopPropagation();
+    } else {
+      $.ajax({
         url: "http://localhost:8080/tweets",
         method: "POST",
-    })
-    .done(function () {
-      console.log(tweetContent);
-      console.log(typeof tweetContent)
-      console.log("Here's your tweet!!");
-    })
-    .fail(function () {
-      alert("Could not post tweet!");
-    })
+      })
+      .done(function () {
+        console.log(tweetContent);
+        console.log(typeof tweetContent)
+        console.log("Here's your tweet!!");
+      })
+      .fail(function () {
+        alert("Could not post tweet!");
+      })
+    }
   });
-
 });
