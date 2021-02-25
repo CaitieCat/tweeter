@@ -44,7 +44,6 @@ $(document).ready(function() {
   const createTweetElement = function(tweetObj) {
     /* Your code for creating the tweet element */
     // ...
-    console.log(tweetObj);
     let timeStamp = new Date(tweetObj.created_at * 1000);
     timeStamp = timeStamp.getHours();
     const newTweet = `
@@ -62,22 +61,23 @@ $(document).ready(function() {
   };
   renderTweets(data);
   console.log("this is firing");
-
-  $(".submit").on("submit", function(event) {
+  $("#submit").on("submit", function(event) { 
+    // prevent the default behavior of the form submission
     event.preventDefault();
-  });
-  /*$.ajax({
-        url,
+    console.log('Submit form');
+    const tweetContent = $(this).serialize();
+
+  $.ajax({
+        url: "http://localhost:8080/tweets",
         method: "POST",
     })
-      .done(function () {
-
-      })
-      .fail(function () {
-       alert("Could not post tweet!");
-      })
-      .always(function (){
-       console.log("this is the ajax request");
-      })*/
+    .done(function () {
+      console.log(tweetContent);
+      console.log("Here's your tweet!!");
+    })
+    .fail(function () {
+      alert("Could not post tweet!");
+    })
+  });
 
 });
