@@ -58,23 +58,42 @@ body {
    padding: 15px;
  }
 
- .postedTweet header{
+ .postedTweet header {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
  }
 
- .handle{
-   display: flex;
-   flex-basis: 66.7%;
-   justify-content: flex-end;
+ .name {
+  display: flex;
+  flex-basis: 70%;
+  justify-content: flex-start;
  }
 
- .postedTweet:hover {
+ .handle {
+   display: none;
+ }
+
+ .handle:hover {
+  flex-basis: 66.7%;
+  justify-content: flex-end;
+ }
+ .postedTweet:hover .handle{
+  display: block;
+}
+
+ .postedTweet:hover{
   box-shadow: 10px 10px 10px darkgray;
   font-weight: 400;
   
+}
+
+.errorMessage {
+  background-color: #f08080;
+  border-style: solid;
+  border-color: #cd5b45;
+  display: none;
 }
 
 hr {

@@ -59,36 +59,20 @@ const loadTweets = function(){
   $("#submit").on("submit", function(event) { 
     // prevent the default behavior of the form submission
     event.preventDefault();
-    console.log('Submit form');
     const tweetContent = $(this).serialize();
-    console.log(tweetContent);
-    console.log(tweetContent.text);
     if (tweetContent.length > 145){
-      alert("Tweet is too long!");
+      $(".errorMessage").slideDown();
       event.stopPropagation();
     } else if (tweetContent === 'text=' || tweetContent === null ){
-      alert("Please enter a tweet before submitting");
+      $(".errorMessage").slideDown();
       event.stopPropagation();
     } else {
       $.post( "/tweets", tweetContent )
-      .then(console.log(tweetContent))
       .then (() => {
-        console.log("hello");
+        $(".errorMessage").slideUp();
         $("#tweet-container").empty();
         loadTweets();
       });
-      /*$.ajax({
-        url: "/tweets",
-        method: "POST",
-      })
-      .done(function () {
-        console.log(tweetContent);
-        console.log(typeof tweetContent)
-        console.log("Here's your tweet!!");
-      })
-      .fail(function () {
-        alert("Could not post tweet!");
-      })*/
     }
   });
 });
