@@ -3,30 +3,7 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png",
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-];
+$(document).ready(function() {
   
 const renderTweets = function(tweets) {
   // loops through tweets
@@ -34,7 +11,7 @@ const renderTweets = function(tweets) {
   // takes return value and appends it to the tweets container
   for (const each of tweets) {
     const tweetResults = createTweetElement(each);
-    $("#tweet-container").append(tweetResults);
+    $("#tweet-container").prepend(tweetResults);
   }
 };
   
@@ -63,6 +40,7 @@ const loadTweets = function(){
     method: "GET",
   })
   .done(function (data){
+    renderTweets(data);
     console.log("Tweet found!");
     console.log(data);
   })
@@ -73,9 +51,8 @@ const loadTweets = function(){
 
 
 
-$(document).ready(function() {
+
   loadTweets();
-  renderTweets(data);
   console.log("this is firing");
   
   
@@ -84,6 +61,8 @@ $(document).ready(function() {
     event.preventDefault();
     console.log('Submit form');
     const tweetContent = $(this).serialize();
+    console.log(tweetContent);
+    console.log(tweetContent.text);
     if (tweetContent.length > 145){
       alert("Tweet is too long!");
       event.stopPropagation();
@@ -91,8 +70,15 @@ $(document).ready(function() {
       alert("Please enter a tweet before submitting");
       event.stopPropagation();
     } else {
-      $.ajax({
-        url: "http://localhost:8080/tweets",
+      $.post( "/tweets", tweetContent )
+      .then(console.log(tweetContent))
+      .then (() => {
+        console.log("hello");
+        $("#tweet-container").empty();
+        loadTweets();
+      });
+      /*$.ajax({
+        url: "/tweets",
         method: "POST",
       })
       .done(function () {
@@ -102,7 +88,7 @@ $(document).ready(function() {
       })
       .fail(function () {
         alert("Could not post tweet!");
-      })
+      })*/
     }
   });
 });
