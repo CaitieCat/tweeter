@@ -54,7 +54,6 @@ const loadTweets = function(){
 
 
   loadTweets();
-  console.log("this is firing");
   
   
   $("#submit").on("submit", function(event) { 
@@ -63,9 +62,15 @@ const loadTweets = function(){
     const tweetContent = $(this).serialize();
     if (tweetContent.length > 145){
       $(".errorMessage").slideDown();
+      setTimeout(()=>{
+        $(".errorMessage").slideUp();
+      }, 4000)
       event.stopPropagation();
     } else if (tweetContent === 'text=' || tweetContent === null ){
       $(".errorMessage").slideDown();
+      setTimeout(()=>{
+        $(".errorMessage").slideUp();
+      }, 4000)
       event.stopPropagation();
     } else {
       $.post( "/tweets", tweetContent )
