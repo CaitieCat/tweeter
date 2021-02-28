@@ -62,25 +62,21 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+
  }
 
  .name {
   display: flex;
   flex-basis: 70%;
-  justify-content: flex-start;
  }
 
  .handle {
    display: none;
  }
 
- .handle:hover {
-  flex-basis: 66.7%;
-  justify-content: flex-end;
- }
  .postedTweet:hover .handle{
-  display: block;
+  display: flex;
 }
 
  .postedTweet:hover{
