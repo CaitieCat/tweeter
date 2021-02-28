@@ -40,6 +40,7 @@ const loadTweets = function(){
     method: "GET",
   })
   .done(function (data){
+    $("#tweet-container").empty();
     renderTweets(data);
     console.log("Tweet found!");
     console.log(data);
@@ -70,7 +71,6 @@ const loadTweets = function(){
       $.post( "/tweets", tweetContent )
       .then (() => {
         $(".errorMessage").slideUp();
-        $("#tweet-container").empty();
         loadTweets();
       });
     }
